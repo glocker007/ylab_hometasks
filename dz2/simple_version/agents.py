@@ -1,5 +1,8 @@
 import random
 
+"""
+    client agent 
+"""
 
 class AgentClient:
     def choose_move(self, env):
@@ -17,6 +20,9 @@ class AgentClient:
             return self.choose_move(env)
         return (i, j), is_end
 
+"""
+    Just a simple greedy algorithm
+"""
 
 class AgentGreedy:
     def choose_move(self, env):

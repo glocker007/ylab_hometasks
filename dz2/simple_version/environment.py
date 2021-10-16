@@ -36,6 +36,10 @@ class Environment:
     def plate(self):
         return self._plate
 
+    """peeks a move, and checks 
+    whether game is ended or not,
+    return boolean
+    """
     def peek_a_move(self, move):  # Game_ended? # Game Interrupted?
         sign = self.whos_turn()
         if self.__is_move_legit(move) and not self._terminated:
@@ -51,6 +55,8 @@ class Environment:
         else:
             return False, False
 
+    """takes a tuple as an input, 
+    and makes a move"""
     def make_a_move(self, move):
         if self.__is_move_legit(move) and not self._terminated:
             self.__change(move)
@@ -67,11 +73,14 @@ class Environment:
 #        else:
 #            print("won x-s!!")
 
+
+    """ It take tuple as an input , and 
+    returns answer whether games is terminated or not """
     def __is_terminal(self, move):
         sign = -1 * self.whos_turn()
         begin, v, numbers = self.__start_line(move)
 
-# move is already done , the last pixel is known
+#   move is already done , the last pixel is known
         for i in range(4):
             if self.__check_line(begin[i], numbers[i], v[i], sign):
                 return True
@@ -91,6 +100,14 @@ class Environment:
             self._used_by_o.add(move)
         self._unused_squares.discard(move)
 
+    """
+        calculates begin as a list of tuples, 
+        numbers - count of squares in each line as list of ints
+        vectors - list of tuples that contain the direction of line 
+        for the horizontal, vertical , and two diagonal lines 
+        and returns them all 
+    """
+
     def __start_line(self, move):
         d = move[1] - move[0]
         start_d_1 = (-1 * min(0, d), max(0, d))
@@ -103,11 +120,16 @@ class Environment:
                    10 - abs(move[1] + move[0] - 9)]
         return starts, vectors, numbers
 
+    """
+    takes as input prevous method single output, 
+    and checks is move is terminal
+    """
+
     def __check_line(self, start, n, v, sign):
         in_a_row = 0
         start_i = start[0]
         start_j = start[1]
-# print(start_i, start_j)
+#   print(start_i, start_j)
         if self._plate[start_i][start_j] == sign:
             in_a_row += 1
         for i in range(n - 1):
