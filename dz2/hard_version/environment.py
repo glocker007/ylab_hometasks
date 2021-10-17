@@ -84,11 +84,13 @@ class Environment(Plate):
             start_i -= inc
             start_j += 1
             
+            changed = self.change(move[0], move[1], sign)
+            
             in_a_row = 0
             if self.get(start_i, start_j) == sign:
                 in_a_row += 1
 
-            changed = self.change(move[0], move[1], sign)
+            
 
             for j in range(N - 1):
                 if in_a_row == 5:
