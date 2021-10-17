@@ -74,7 +74,7 @@ class Environment:
 #            print("won x-s!!")
 
 
-    """ It take tuple as an input , and 
+    """ It takes tuple as an input , and 
     returns answer whether games is terminated or not """
     def __is_terminal(self, move):
         sign = -1 * self.whos_turn()
