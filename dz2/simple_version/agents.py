@@ -6,14 +6,27 @@ import random
 
 class AgentClient:
     def choose_move(self, env):
+        def is_number(char):
+            if len(char) != 1:
+                return False
+            if ord(char) <= ord('9') and ord(char) >= ord('0'):
+                return True
+            return False
+
         print("choose coords (splited by space): ", end=" ")
         while True:
             s = input()
             if len(s.split()) == 0:
-                s = input()
+                print("not a numbers")
+                return self.choose_move(env)
             else:
-                i, j = map(int, s.split())
-                break
+                splited = s.split()
+                if len(splited) == 2 and is_number(splited[0]) and is_number(splited[1]):
+                    i, j = map(int,splited)
+                    break
+                else:
+                    return self.choose_move(env)
+
         is_end, correct = env.peek_a_move((i, j))
         if not correct:
             print("not a move")
