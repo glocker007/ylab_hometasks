@@ -1,4 +1,6 @@
 from environment import Environment
+def check_variants(s, v1, v2):
+    return (s != v1 and s != v2)
 
 class Game(Environment):
     def __init__(self, agent_1, agent_2):
@@ -13,9 +15,21 @@ class Game(Environment):
     def restart(self):
         print("Restart game ? [Y/ N]:") 
         s = input()
+
+        while (check_variants(s, "Y", "N")):
+            print("incorrect input")
+            print("Restart game ? [Y/ N]:") 
+            s = input()
+
         if s == "Y":
             print("Swap sides? [Y/N]:") 
             s = input()
+
+            while (check_variants(s, "Y", "N")):
+                print("incorrect input")
+                print("Restart game ? [Y/ N]:") 
+                s = input()
+
             if s == "Y":
                 self.agents[0], self.agents[1] = self.agents[1], self.agents[0]
             self.__init__(self.agents[0], self.agents[1])

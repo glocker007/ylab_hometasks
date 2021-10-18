@@ -40,9 +40,21 @@ class Game:
                 print(self._env)
                 print("continue? [Y/N]?", end="")
                 c = input()
+
+                while c!="Y" and c !="N":
+                    print("incorrect input")
+                    print("continue? [Y/N]?", end="")
+                    c = input()
+
                 if c == "Y":
                     print("swap sides? [Y/N]")
                     s = input()
+
+                    while s!="Y" and s !="N":
+                        print("incorrect input")
+                        print("swap sides? [Y/N]?", end="")
+                        s = input()
+
                     if s == "Y":
                         self._a1, self._a2 = self._a2, self._a1
                     self.reset()

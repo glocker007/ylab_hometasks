@@ -7,6 +7,10 @@ a_2 = AgentGreedy()
 a_3 = AgentGreedy()
 print("Choose a sign [x/o]:")
 s = input()
+while (s != "x" and s != "o"):
+    print("incorrect input!")
+    print("Choose a sign [x/o]:")
+    s = input()
 agents = [a_1, a_2]
 if s == "x":
     agents[0], agents[1] = agents[1], agents[0]
