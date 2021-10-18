@@ -33,7 +33,7 @@ class Game(Environment):
                 print("Draw")
                 self.who_won()
                 go_on = self.restart()
-                if go_in:
+                if go_on:
                     self.Print()
                     continue
                 else:
