@@ -31,7 +31,6 @@ class Game(Environment):
             if len(self.unused_fields) == 0:
                 self.Print()
                 print("Draw")
-                self.who_won()
                 go_on = self.restart()
                 if go_on:
                     self.Print()
