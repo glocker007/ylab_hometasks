@@ -2,7 +2,7 @@
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 """
-from tkinter import *
+from tkinter import * 
 import window.shapes_approxiamtions as sa
 from vector.vector_3d import Vector3D, Vector2D
 from math import pi
@@ -175,8 +175,9 @@ number_of_event = {
         "Circle": (1, ["Введите радиус"]),
         "Square": (1, ["Введите длину стороны"]),
         "Rectangle": (2,["Введите длину стороны","Введите длину стороны"]),
-        "Trapezoid": (1,["Введите длины сторон через пробел"]),
-        "Rhombus": (1, ["Введите длину стороны и угол через пробел"]),
+        "Trapezoid": (4,["Введите длину Основания", "Введите длинy стороны",
+            "Введите длину Основания", "Введите длину стороны"]),
+        "Rhombus": (2, ["Введите длину стороны", "Введите угол в радианах"]),
         "Triangle": (3, ["Введите координаты вешин через пробел"
             for i in range(3)]),
         "Sphere" : (1, ["Введите радиус"]),
@@ -193,7 +194,7 @@ number_of_event = {
 def CommandRequest(index: int):
     def Handler():
         wd = Tk()
-        wd.geometry("600x100")
+        wd.geometry("600x150")
         figure = flat_figures[index]
         number_of_tabs, strings = number_of_event[figure]
         entries = []
