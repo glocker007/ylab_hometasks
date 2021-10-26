@@ -114,6 +114,11 @@ class Triangle(shapes.Triangle, VectorChain):
         for i in range(3):
             lengths.append((self._chain[i] - self._chain[(i+1) % 3]).length())
         shapes.Triangle.__init__(self, *lengths)
+    
+    def rotate(self, vector_rot:'vector.Vector3D', angle:float):
+        self._chain = transform.Matrix.rotation_around_vector(vector_rot, 
+                angle, self._center, self._chain)
+        return self
 
 
 class Trapezoid(shapes.Trapezoid):
@@ -369,7 +374,7 @@ class Cone(shapes.Cone):
                 self.radius * sin(sum_angle)))
             sum_angle += angle
         chains = [VectorChain(lst)]
-        high = self._center + vector.Vector3D(0,0,self.height)
+        high = self._center + vector.Vector3D(0,self.height,0)
         for i in range(len(lst)):
             chains.append(VectorChain([lst[i], high]))
         return chains
