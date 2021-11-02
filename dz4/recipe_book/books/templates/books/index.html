@@ -1,10 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="eng">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
+ <form method="post" action="{% url 'recipes_list' %}">
+    {% csrf_token %}
+       <input placeholder="dishes" name="recipe_or_name">
+       <input placeholder="Ingredients" name="ingredients">
+       <button type="submit"> Submit </button>
+ </form>
+{% block content %}
+{% endblock %}
+<div>
+    <ul>
+        {% for elem in recipes %}
+        <li>
+            {{ elem.name }}
+           <ul>
+               {% for ing in elem.ingredients.all %}
+              <li> {{ing}} </li>
+               {% endfor %}
+           </ul><br>
+            Описание рецепта:
+            <p>{{ elem.description }}</p>
+        </li><br>
+        {% endfor %}
+    </ul>
+</div>
 
 </body>
 </html>

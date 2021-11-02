@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Рецепты</title>
 </head>
 <body>
-$END$
+{% extends 'books/index.html' %}
+{% block content %}
+<div>
+    <ul>
+        {% for elem in recipe_list %}
+        <li>
+            {{ elem.name }}
+           <ul>
+               {% for ing in elem.ingredients.all %}
+              <li> {{ing}} </li>
+               {% endfor %}
+           </ul><br>
+            Описание рецепта:
+            <p>{{ elem.description }}</p>
+        </li><br>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
 </body>
 </html>

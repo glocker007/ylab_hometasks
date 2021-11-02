@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+   {% block content %}
+    <div class="features">
+        <h1> Форма добавления рецепта</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{form.name}}<br>
+            {{form.ingredients}}<br>
+            {{form.description}}<br>
+            {{form.date_added}}<br>
+            <button class="btn" type="submit">Submit</button>
+            <span>{{error}}</span>
+        </form>
+    </div>
+   {% endblock %}
