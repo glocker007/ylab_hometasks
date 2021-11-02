@@ -1,6 +1,6 @@
-# Каталог книг
+# Книга рецептов 
 
-Сервис каталога книг.
+Сервис книги рецептов.
 
 ## Использование Docker
 
@@ -41,6 +41,9 @@ docker-compose exec app bash
 ```
 
 #### Применение миграций:
+```bash
+python manage.py makemigrations
+```
 
 ```bash
 python manage.py migrate
