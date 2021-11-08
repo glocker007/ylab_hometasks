@@ -39,7 +39,7 @@ docker-compose stop
 ```bash
 docker-compose exec app bash
 ```
-
+### Применение миграций
 ```bash
 python manage.py migrate
 ```
