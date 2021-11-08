@@ -54,7 +54,7 @@ python manage.py createsuperuser
 #### Добавление фикстур
 
 ```bash
-python manage.py loaddata books/fixture/books
+python manage.py loaddata books/fixture/initial.json
 ```
 
 Проект доступен по адресу http://127.0.0.1:8000
