@@ -47,6 +47,12 @@ def all_recipes(request):
             if word == '':
                 continue
             searched_objects = searched_objects.filter(ingredients__name__contains=word)
+    else:
+        searched_dishes = ""
+        searched_ingredients = [""]
+        searched_objects = Recipe.objects.all()
+        searched = 1
+
     return render(request, 'books/recipes.html', {'recipe_list':searched_objects,
                                                   'searched_dishes':searched_dishes,
                                                   'searched_ingredients': searched_ingredients,
